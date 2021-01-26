@@ -1,3 +1,3 @@
 @Library('piper-lib-os') _
 
-abapEnvironmentPipeline script: this
+gctsCreateRepository script: this
