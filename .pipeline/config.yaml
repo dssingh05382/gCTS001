@@ -1,14 +1,48 @@
+general:
+  abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
+  addonDescriptorFileName: 'addon.yml'
+  cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+  cfOrg: 'myOrgBld'
+  cfSpace: 'mySpaceBld'
+  cfCredentialsId: 'cfAuthentification'
+  cfServiceInstance: 'bld_system'
+  cfServiceKeyName: 'JENKINS_SAP_COM_0510'
 stages:
-  gctsCreateRepository:
-    host: 'https://fc-pun01-hana.india.rapidigm.com:8001'
-    client: '300'
-    abapCredentialsId: 'ABAPUserPasswordCredentialsId'
-    repository: 'Dev'
-    remoteRepositoryURL: 'https://github.com/skondekar/shubh'
-    role: 'Development'
-    vSID: 'S4H'  
-  gctsCloneRepository:
-    host: 'https://fc-pun01-hana.india.rapidigm.com:8001'
-    client: '300'
-    abapCredentialsId: 'ABAPUserPasswordCredentialsId'
-    repository: 'ZNGIT'
+  Prepare System:
+    cfService: 'abap'
+    cfServicePlan: 'standard'
+    abapSystemAdminEmail: 'user@example.com'
+    abapSystemDescription: 'Assembly System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'BLD'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
+    includeAddon: false
+    cfServiceKeyConfig: 'sap_com_0510.json'
+  Clone Repositories:
+    repositories: 'addon.yml'
+    strategy: 'AddonBuild'
+  ATC:
+    atcConfig: 'atcConfig.yml'
+  Build:
+    cfServiceKeyName: 'JENKINS_SAP_COM_0582'
+    cfServiceKeyConfig: 'sap_com_0582.json'
+  Integration Tests:
+    cfOrg: 'myOrgAti'
+    cfSpace: 'mySpaceAti'
+    cfServiceInstance: 'ati_system'
+    cfService: 'abap'
+    cfServicePlan: 'saas_oem'
+    abapSystemAdminEmail: 'user@example.com'
+    abapSystemDescription: 'Add-on Installation Test System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'ATI'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
+    includeAddon: true
+    confirmDeletion: true
+  Publish:
+    targetVectorScope: 'P'
+  Post:
+    confirmDeletion: true
+    cfDeleteServiceKeys: true
