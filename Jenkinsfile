@@ -1,3 +1,3 @@
-@Library('piper-lib-os') _
+library('piper-lib-os')
 
 gctsCreateRepository script: this
