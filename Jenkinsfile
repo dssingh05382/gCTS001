@@ -2,8 +2,8 @@
 
 gctsCloneRepository(
   script: this,
-  host: 'https://abap.server.com:port',
+  host: 'https://fc-pun01-hana.india.rapidigm.com:8001',
   client: '300',
   abapCredentialsId: 'ABAPUserPasswordCredentialsId',
-  repository: 'myrepo'
+  repository: 'ZNGIT'
 )
