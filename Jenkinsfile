@@ -1,10 +1,10 @@
 @Library('piper-lib-os') _
 node() {
-  stage('Create Repository') {
-    gctsCreateRepository script:this
+  stage('gctsCreateRepository') {
+    gctsCreateRepository script: this
   }
   
-  stage('Clone Repository') {
-    gctsCloneRepository script:this
+  stage('gctsCloneRepository') {
+    gctsCloneRepository script: this
   }
 }
