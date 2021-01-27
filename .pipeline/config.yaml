@@ -1,1 +1,11 @@
+general:
+stages:
+  gctsCreateRepository:
+    host: 'https://fc-pun01-hana.india.rapidigm.com:8001'
+    client: '300'
+    abapCredentialsId: 'ABAPUserPasswordCredentialsId'
+    repository: 'Dev'
+    remoteRepositoryURL: 'https://github.com/skondekar/shubh'
+    role: 'Development'
+    vSID: 'S4H'  
 
