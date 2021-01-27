@@ -8,4 +8,9 @@ stages:
     remoteRepositoryURL: 'https://github.com/skondekar/shubh'
     role: 'Development'
     vSID: 'S4H'  
+  gctsCloneRepository:
+    host: 'https://fc-pun01-hana.india.rapidigm.com:8001'
+    client: '300'
+    abapCredentialsId: 'ABAPUserPasswordCredentialsId'
+    repository: 'S4H'
 
