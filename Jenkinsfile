@@ -1,3 +1,6 @@
-library('piper-lib-os')
-
-gctsCreateRepository script: this
+@Library('piper-lib-os') _
+node() {
+  stage('Create') {
+    gctsCreateRepository script:this
+  }
+}
